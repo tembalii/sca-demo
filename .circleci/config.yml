@@ -9,7 +9,6 @@ jobs:
         type: string
         default: main
     environment:
-      SEMGREP_APP_TOKEN: $SEMGREP_APP_TOKEN
       SEMGREP_REPO_NAME: << parameters.repo_path >>
       SEMGREP_REPO_URL: << pipeline.project.git_url >>
       SEMGREP_BRANCH: << pipeline.git.branch >>
@@ -22,13 +21,5 @@ jobs:
           command: semgrep ci --sca
 workflows:
   main:
-    triggers:
-     - schedule:
-         # Every day, 0421Z.
-         cron: "0 0 * * *"
-         filters:
-           branches:
-             only:
-               - main
     jobs:
       - semgrep-scan
