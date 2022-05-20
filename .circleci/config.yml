@@ -22,13 +22,5 @@ jobs:
           command: semgrep ci --sca
 workflows:
   main:
-    triggers:
-     - schedule:
-         # Every day, 0421Z.
-         cron: "0 0 * * *"
-         filters:
-           branches:
-             only:
-               - main
     jobs:
       - semgrep-scan
