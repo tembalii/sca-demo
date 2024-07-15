@@ -13,6 +13,8 @@ function hello() {
 
 }
 
+_.merge(myObj, maliciousObject);
+
 hello();
 
 function notExposedVuln() {
